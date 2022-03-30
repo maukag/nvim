@@ -65,8 +65,8 @@ vnoremap <leader>bl y:new<cr>:execute '.!bq ls '@"<cr>
 " Use <c-l> for window navigation. Aligns with wintermkey.
 nnoremap <c-l> <c-w>
 
-" Open terminal.
-nnoremap <leader>t :term<cr>
+" Open terminal in a new split.
+nnoremap <leader>t :split<cr>:term<cr>
 
 " Use CTRL+u to uppercase current word.
 inoremap <c-u> <esc>viWUEa
@@ -145,4 +145,6 @@ augroup filetype_ledger
 	autocmd FileType ledger nnoremap <buffer> <localleader>a :LedgerAlignBuffer<cr>
 	" Calculate net worth.
 	autocmd FileType ledger nnoremap <buffer> <localleader>nw :Ledger --market --price-db prices.db --pedantic bal ^assets ^liab<cr>
+	" Calculate monthly mortgage payment from budget file.
+	autocmd FileType ledger nnoremap <buffer> <localleader>m :Ledger --budget --monthly register ^Expenses:Mortgage<cr>
 augroup END
