@@ -3,6 +3,7 @@ call plug#begin()
 Plug 'psf/black', { 'branch': 'stable' }
 Plug 'nvie/vim-flake8'
 Plug 'ledger/vim-ledger'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 " Don't run in Vi-compatible mode
@@ -25,6 +26,9 @@ set relativenumber
 
 " Switch on line number for current line (as opposed to 0).
 set number
+
+" Use system clipboard.
+set clipboard+=unnamedplus
 
 " Copy indent from current line when starting a new line. (Typing 
 " CTRL-D will delete the indent).
@@ -136,6 +140,8 @@ augroup END
 let g:ledger_date_format = '%Y-%m-%d'
 " Algin commodities in a sane fashion.
 let g:ledger_align_commodity = 1
+" Abbreviation for Barclays current account.
+iabbrev current_account Assets:Barclays:BBA OVDRFT
 augroup filetype_ledger
 	autocmd!
 	autocmd FileType ledger setlocal shiftwidth=4
